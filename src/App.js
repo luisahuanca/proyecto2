@@ -2,9 +2,8 @@ import react from 'react';
 import { useEffect, useState} from 'react';
 import { collection, getDocs, addDoc, doc, updateDoc, deleteDoc} from 'firebase/firestore/lite';
 import { dbConfig } from './firebase';
+import './style.css';
 
-
-console.log('hola mundo');
 
 function App () {
     
@@ -40,7 +39,7 @@ function App () {
         if(editar) {
             actualizarEnDB();
         }else {
-            guardarTarea()
+            guardarTarea();
         }
     };
 
@@ -124,9 +123,40 @@ function App () {
  
     return (
       <div className="container">
-       <div className="row">
-        <div className="col-6">
-          <h1>Lista de tareas</h1>
+          
+          <div className="header__principal">
+            
+          </div>
+
+
+       <div className="container__1">
+        <div>
+        <h3>
+            {editar ? 'Editar tarea' : 'Agregar tarea'}
+            </h3>
+          <form onSubmit={submit}>
+          <label className="form-label"> Tarea </label>
+
+          <input type= 'text' className= 'form-control'
+          onChange={(e)=>handleFormNombre(e.target.value)}
+          value= {nombre} />
+          
+          <label className='form-label'> Detalles </label>
+
+          <input type= 'text' className="form-control"
+          onChange={(e)=>handleFormDetalles(e.target.value)}
+          value={detalles}/>
+
+          <div className= 'mt-4'>
+          <button type= 'submit'className="btn btn-dark ">
+            {editar ? 'Actualizar' : 'Agregar'} </button>
+            </div>
+          </form>
+        
+        </div>
+        <div className='divisor'></div>
+        <div className="">
+        <h3>Lista de tareas</h3>
           <ul className="list-group">
             {listaTareas.map((item) => (
                 <li key = {item.id}
@@ -142,28 +172,9 @@ function App () {
                 </li>
               ))}
           </ul>
-        </div>
-        <div className="col-6">
-          <h1>
-            {editar ? 'Editar tarea' : 'Agregar tarea'}
-            </h1>
-          <form onSubmit={submit}>
-          <label className="form-label"> Tarea </label>
-
-          <input type= 'text' className= 'form-control'
-          onChange={(e)=>handleFormNombre(e.target.value)}
-          value= {nombre} />
-          
-          <label className='form-label'> Detalles </label>
-
-          <input type= 'text' className="form-control"
-          onChange={(e)=>handleFormDetalles(e.target.value)}
-          value={detalles}/>
-          <button className="btn btn-dark">
-            {editar ? 'Actualizar' : 'Agregar'} </button>
-          </form>
 
         </div>
+        <div className= 'footer'></div>
       </div>
     </div>
     );

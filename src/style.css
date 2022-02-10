@@ -1,0 +1,25 @@
+.header__principal {
+    height: 100px;
+    width: 100%;
+    background-color: aquamarine;
+    margin-bottom: 50px;
+    
+
+}
+
+.container__1 {
+   justify-content: center;
+   margin: 0 15% 0 15%;
+}
+
+.divisor {
+    height: 5px;
+    background-color:aquamarine;
+    margin: 5% 0 5% 0;
+
+}
+
+.footer {
+    height:100px;
+
+}
